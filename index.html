@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAMPEONATO - GEOPOST</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="tabuleiro">
+        <div id="lado-esquerdo">
+            <div id="bloco-1" class="bloco-time">
+                <p id="p-1"></p>
+                <p id="p-2"></p>
+                <p id="p-3"></p>
+                <p id="p-4"></p>
+            </div>
+            <div id="bloco-2" class="bloco-time">
+                <p id="p-5"></p>
+                <p id="p-6"></p>
+                <p id="p-7"></p>
+                <p id="p-8"></p>
+            </div>
+            <div id="bloco-3" class="bloco-time">
+                <p id="p-9"></p>
+                <p id="p-10"></p>
+                <p id="p-11"></p>
+                <p id="p-12"></p>
+            </div>
+            <div id="bloco-4" class="bloco-time">
+                <p id="p-13"></p>
+                <p id="p-14"></p>
+                <p id="p-15"></p>
+                <p id="p-16"></p>
+            </div>
+        </div>
+
+        <div id="lado-direito">
+            <div id="bloco-5" class="bloco-time">
+                <p id="p-17"></p>
+                <p id="p-18"></p>
+                <p id="p-19"></p>
+                <p id="p-20"></p>
+            </div>
+            <div id="bloco-6" class="bloco-time">
+                <p id="p-21"></p>
+                <p id="p-22"></p>
+                <p id="p-23"></p>
+                <p id="p-24"></p>
+            </div>
+            <div id="bloco-7" class="bloco-time">
+                <p id="p-25"></p>
+                <p id="p-26"></p>
+                <p id="p-27"></p>
+                <p id="p-28"></p>
+            </div>
+            <div id="bloco-8" class="bloco-time">
+                <p id="p-29"></p>
+                <p id="p-30"></p>
+                <p id="p-31"></p>
+                <p id="p-32"></p>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="loopar()">LOGAR</button>
+    <button onclick="shuffle(teams)">EMBARALHAR TIMES</button>
+    <button onclick="setarValores()">SETAR VALORES</button>
+    <button onclick="tresRodadas()">TRESRODADAS</button>
+
+    <script>
+            var teams = [];
+            var A = [];
+            var B = [];
+            var C = [];
+            var D = [];
+            var E = [];
+            var F = [];
+            var G = [];
+            var H = [];
+
+               fetch('https://estagio.geopostenergy.com/WorldCup/GetAllTeams',  {
+                    method: 'GET',
+                    headers: {
+                                'git-user': 'caiobarbosa881' 
+                            }
+                 }).then((response) => { return response.json() }).then((data) => { obj = data }).catch((error) => console.log(error));
+
+                 function loopar(){
+                    for(i = 0; i < obj.Result.length; i++){
+                        teams.push(obj.Result[i]);
+                    }
+                    console.log(teams)
+                 }
+
+                    function shuffle(a) {
+                        for (let i = a.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [a[i], a[j]] = [a[j], a[i]];
+                        }
+                        console.log(a);
+                        return a;
+                    }
+
+                    function setarValores(){
+                        teams = shuffle(teams);
+                        console.log(teams)
+                        for(i = 0; i< teams.length; i++){
+                            document.getElementById(`p-${i + 1}`).innerHTML = teams[i].Name;
+                        }
+
+                    }
+
+                    function tresRodadas(){
+                        A.push(teams[0], teams[1], teams[2], teams[3]);
+                        B.push(teams[4], teams[5], teams[6], teams[7]);
+                        C.push(teams[8], teams[9], teams[10], teams[11]);
+                        D.push(teams[12], teams[13], teams[14], teams[15]);
+                        E.push(teams[16], teams[17], teams[18], teams[19]);
+                        F.push(teams[20], teams[21], teams[22], teams[23]);
+                        G.push(teams[24], teams[25], teams[26], teams[27]);
+                        H.push(teams[28], teams[9], teams[30], teams[31]);
+
+                        console.log(A);
+                        console.log(B);
+                        console.log(C);
+                        console.log(D);
+                        console.log(E);
+                        console.log(F);
+                        console.log(G);
+                        console.log(H);           
+                        
+                        for(rodadas = 0; rodadas < 3; rodadas++){
+                            console.log('RODADA: ' + rodadas + 1)
+                            for(jogos = 0; jogos < 2; jogos++){
+                                console.log('JOGO: ' + jogos)
+                            }
+                        }
+                    }
+
+    </script>
+</body>
+</html>

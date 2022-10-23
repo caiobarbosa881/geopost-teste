@@ -1,0 +1,20 @@
+#tabuleiro{
+    display: flex;
+    flex-direction: row;
+}
+.bloco-time{
+    background-color: aquamarine;
+    height: auto;
+    width: 200px;
+    border: 1px black solid;
+}
+#lado-esquerdo{
+    height: auto;
+    background-color: rgb(187, 187, 242);
+    width: 50%;   
+}
+#lado-direito{
+    height: 500px;
+    background-color: rgb(187, 187, 242);
+    width: 50%;   
+}
